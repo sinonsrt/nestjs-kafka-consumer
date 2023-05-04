@@ -4,6 +4,8 @@ import { UserController } from './user.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { UserRepository } from './user.repository';
+import { AddressService } from '../address/address.service';
+import { AddressModule } from '../address/address.module';
 
 @Module({
   imports: [
@@ -23,8 +25,9 @@ import { UserRepository } from './user.repository';
         },
       },
     ]),
+    AddressModule,
   ],
   controllers: [UserController],
-  providers: [UserService, UserRepository, PrismaService],
+  providers: [UserService, UserRepository, PrismaService, AddressService],
 })
 export class UserModule {}

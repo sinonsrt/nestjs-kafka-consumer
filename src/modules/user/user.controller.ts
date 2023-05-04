@@ -15,7 +15,7 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @MessagePattern(env.KAFKA_CREATE_USER_TOPIC)
+  @MessagePattern(env.KAFKA_UPDATE_USER_TOPIC)
   async update(@Payload() updateUserDto: UpdateUserDto) {
     console.log('Kafka Update user consumer -> ', updateUserDto);
     return this.userService.update(updateUserDto.id, updateUserDto);
